@@ -8,7 +8,7 @@ export default function OrderLayout({children}: Readonly<{ children: React.React
         <div className="md:flex">
             <OrderSidebar />
 
-            <main>
+            <main className="md:flex-1 md:h-screen md:overflow-y-scroll p-5">
                 {children}
             </main>
 
