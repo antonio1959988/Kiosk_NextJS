@@ -18,6 +18,9 @@ async function getProducts(page: number, pageSize: number) {
     skip,
     include: {
       category: true
+    },
+    orderBy: {
+      id: 'desc'
     }
   });
   return products;

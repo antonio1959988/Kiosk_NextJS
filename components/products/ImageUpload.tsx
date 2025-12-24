@@ -1,13 +1,18 @@
 "use client"
 
+import { getImagePath } from "@/src/utils"
 import { CldUploadWidget } from "next-cloudinary"
 import Image from "next/image"
 import { useState } from "react"
 import { TbPhotoPlus } from 'react-icons/tb'
 
-export default function ImageUpload() {
+type ImageUploadProps = {
+    image?: string
+}
 
-    const [imageUrl, setImageUrl] = useState('')
+export default function ImageUpload({ image }: ImageUploadProps) {
+
+    const [imageUrl, setImageUrl] = useState(image)
 
     return (
         <CldUploadWidget
@@ -29,30 +34,29 @@ export default function ImageUpload() {
                     <div className="space-y-2">
                         <label className="text-slate-800">Imagen Producto</label>
                         <div
-                            onClick={() => open()} 
-                            className="relative cursor-pointer hover:opacity-70 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100">
+                            onClick={() => open()}
+                            className="relative cursor-pointer hover:opacity-70 min-h-44 transition p-10 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600 bg-slate-100">
                             <TbPhotoPlus
                                 size={50}
                             />
-                            <p className="text-lg font-semibold">Agregar Imagen</p>
-
-                            {imageUrl && (
+                            {imageUrl ? (
                                 <div
                                     className="absolute inset-0 size-full">
-                                    <Image 
+                                    <Image
                                         style={{ objectFit: 'contain' }}
-                                        src={imageUrl}
+                                        src={getImagePath(imageUrl)}
                                         alt="Imagen de producto"
                                         fill
                                     />
                                 </div>
-                            )}
+                            ) : <p className="text-lg font-semibold">Agregar Imagen</p>}
                         </div>
                     </div>
-                    <input 
-                        type="hidden" 
-                        name="image" 
-                        value={imageUrl}    
+
+                    <input
+                        type="hidden"
+                        name="image"
+                        defaultValue={imageUrl}
                     />
                 </>
             )}
