@@ -4,7 +4,6 @@ import Logo from "../ui/Logo";
 
 async function getCategories() {
   return await prisma.category.findMany();
-  
 }
 
 export default async function OrderSidebar() {
