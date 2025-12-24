@@ -2,6 +2,7 @@
 
 import { Product } from "@/src/generated/prisma/client"
 import { useStore } from "@/src/store";
+import { toast } from "react-toastify";
 
 type AddProductButtonProps = {
     product: Product;
@@ -13,7 +14,10 @@ export default function AddProductButton({ product } : AddProductButtonProps) {
 
     return (
         <button
-            onClick={() => addToOrder(product)}
+            onClick={() => {
+                addToOrder(product)
+                toast.success("Producto agregado al pedido")
+            }}
             type="button"
             className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer">
             Agregar
