@@ -37,7 +37,7 @@ export default function OrderCard({ order }: OrderCardProps) {
             <form action={completeOrder}>
                 <input type="hidden" value={order.id} name="order_id" />
                 <input
-                    onClick={() => setTimeout(() => setIsLoading(true), 1000)}
+                    onClick={() => setTimeout(() => setIsLoading(true), 300)}
                     type="submit"
                     className={`bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer`}
                     value='Marcar Orden Completada'
