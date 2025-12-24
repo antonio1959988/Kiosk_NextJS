@@ -13,7 +13,7 @@ export default function CategoryIcon({ category } : CategoryIconProps) {
   const params = useParams<{ category: string }>();
 
   return (
-    <div className={`${category.slug === params.category ? 'bg-amber-400' : ''} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}>
+    <div className={`${category.slug === params.category ? 'bg-amber-400' : ''} relative flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}>
       <Image
         src={`/icon_${category.slug}.svg`}
         alt={`Imagen de la Categoria ${category.name}`}
@@ -21,7 +21,7 @@ export default function CategoryIcon({ category } : CategoryIconProps) {
         height={64}
       />
       <Link 
-        className="text-lg font-bold"
+        className="text-lg font-bold before:absolute before:inset-0"
         href={`/order/${category.slug}`}>{category.name}</Link>
     </div>
   )
