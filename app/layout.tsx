@@ -11,6 +11,13 @@ const font = Inter({
 export const metadata: Metadata = {
   title: "Fresh Coffee",
   description: "Kiosko NEXT JS con app router y prisma",
+  icons: [
+    {
+      rel: "icon",
+      url: "/logo.svg",
+      type: "image/svg+xml"
+    }
+  ]
 };
 
 export default function RootLayout({
